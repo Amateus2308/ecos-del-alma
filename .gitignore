@@ -1,0 +1,40 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# build
+.next/
+out/
+dist/
+build/
+
+# database
+*.db
+*.db-journal
+*.db-wal
+
+# env
+.env
+.env.local
+.env.production
+
+# ide
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# os
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+npm-debug.log*
+
+# misc
+*.tar.gz
+skills/
+examples/
+mini-services/

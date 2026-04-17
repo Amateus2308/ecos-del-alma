@@ -1,0 +1,2737 @@
+/* Ecos del Alma — estilos globales
+   la mayoría de los estilos góticos están acá:
+   animaciones, scrollbars, efectos de papel, sangre, neblina...
+  tailwind se encarga de lo básico, esto es para lo custom */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-cinzel: 'Cinzel', serif;
+  --font-cinzel-decorative: 'Cinzel Decorative', serif;
+  --font-fell: 'IM Fell English', serif;
+  --font-typewriter: 'Special Elite', cursive;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-blood: #8B0000;
+  --color-blood-light: #a00000;
+  --color-blood-dark: #5a0000;
+  --color-gold: #c9a84c;
+  --color-gold-dim: #8a7234;
+  --color-gothic-bg: #0a0a0a;
+  --color-gothic-surface: #111111;
+  --color-gothic-card: #1a1a1a;
+  --color-gothic-border: #2a2a2a;
+  --color-purple-dark: #2d1b3d;
+  --color-purple-dim: #1a1225;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: #0a0a0a;
+  --foreground: #d4c5b0;
+  --card: #1a1a1a;
+  --card-foreground: #d4c5b0;
+  --popover: #1a1a1a;
+  --popover-foreground: #d4c5b0;
+  --primary: #8B0000;
+  --primary-foreground: #d4c5b0;
+  --secondary: #2d1b3d;
+  --secondary-foreground: #d4c5b0;
+  --muted: #1a1a1a;
+  --muted-foreground: #8a7e6b;
+  --accent: #c9a84c;
+  --accent-foreground: #0a0a0a;
+  --destructive: #8B0000;
+  --border: #2a2a2a;
+  --input: #2a2a2a;
+  --ring: #c9a84c;
+  --chart-1: #8B0000;
+  --chart-2: #c9a84c;
+  --chart-3: #2d1b3d;
+  --chart-4: #4a2d6e;
+  --chart-5: #8a7234;
+  --sidebar: #111111;
+  --sidebar-foreground: #d4c5b0;
+  --sidebar-primary: #8B0000;
+  --sidebar-primary-foreground: #d4c5b0;
+  --sidebar-accent: #2d1b3d;
+  --sidebar-accent-foreground: #d4c5b0;
+  --sidebar-border: #2a2a2a;
+  --sidebar-ring: #c9a84c;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Gothic Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(139, 0, 0, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(139, 0, 0, 0.6); }
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+@keyframes bloodDrip {
+  0% { height: 0; opacity: 0; }
+  10% { opacity: 1; }
+  100% { height: 100vh; opacity: 0.6; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+.animate-flicker {
+  animation: flicker 4s ease-in-out infinite;
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Gothic letter styling */
+.letter-text {
+  font-family: 'Special Elite', cursive;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  color: #c4b59a;
+}
+.letter-title {
+  font-family: 'Cinzel Decorative', serif;
+  color: #c9a84c;
+  text-shadow: 0 0 10px rgba(201, 168, 76, 0.3);
+}
+
+/* Ornamental dividers */
+.gothic-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.gothic-divider::before,
+.gothic-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #c9a84c, transparent);
+}
+
+/* Blood drip effect */
+.blood-drip-left {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #8B0000, transparent);
+  height: 0;
+  animation: bloodDrip 8s ease-in forwards;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Gothic button style */
+.gothic-btn {
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.gothic-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+.gothic-btn:hover::after {
+  transform: translateX(100%);
+}
+
+/* Card hover glow */
+.card-glow {
+  transition: all 0.4s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 30px rgba(139, 0, 0, 0.2), 0 0 60px rgba(139, 0, 0, 0.1);
+  border-color: rgba(139, 0, 0, 0.4);
+}
+
+/* Custom audio player */
+.audio-player input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: #2a2a2a;
+  border-radius: 2px;
+  outline: none;
+}
+.audio-player input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #c9a84c;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(201, 168, 76, 0.5);
+}
+
+/* Paper texture for letters */
+.paper-texture {
+  background: linear-gradient(135deg, #1a1611 0%, #201a14 50%, #1a1611 100%);
+  position: relative;
+}
+.paper-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 28px,
+    rgba(139, 0, 0, 0.03) 28px,
+    rgba(139, 0, 0, 0.03) 29px
+  );
+  pointer-events: none;
+}
+
+/* Scanline overlay */
+.scanline-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 998;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* Shimmer text effect */
+.text-shimmer {
+  background: linear-gradient(
+    120deg,
+    #c9a84c 0%,
+    #f0dca0 25%,
+    #c9a84c 50%,
+    #8a7234 75%,
+    #c9a84c 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 8s linear infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Blood drip right side */
+.blood-drip-right {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, #8B0000 20%, transparent 80%);
+  height: 100vh;
+  z-index: 100;
+  pointer-events: none;
+  animation: bloodDripPulse 6s ease-in-out infinite;
+}
+@keyframes bloodDripPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* Gothic corner decorations for cards */
+.gothic-corner-frame {
+  position: relative;
+}
+.gothic-corner-frame::before,
+.gothic-corner-frame::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: #c9a84c;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+.gothic-corner-frame::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.gothic-corner-frame::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+.gothic-corner-frame:hover::before,
+.gothic-corner-frame:hover::after {
+  opacity: 0.6;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(139, 0, 0, 0.3);
+  color: #d4c5b0;
+}
+
+/* Focus styles for inputs */
+input:focus, textarea:focus {
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.15), 0 0 15px rgba(139, 0, 0, 0.1);
+}
+
+/* Gothic link style */
+a {
+  color: #c9a84c;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #f0dca0;
+}
+
+/* Smooth page transitions */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Image loading animation */
+img {
+  opacity: 0;
+  animation: imgLoadIn 0.5s ease-out forwards;
+}
+@keyframes imgLoadIn {
+  to { opacity: 1; }
+}
+
+/* Gothic separator variant */
+.ornate-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+.ornate-separator .line {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.3), transparent);
+}
+.ornate-separator .ornament {
+  color: #c9a84c;
+  font-size: 0.5rem;
+  opacity: 0.5;
+}
+
+/* Glow line - animated expanding line from center */
+.glow-line {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #c9a84c, transparent);
+  animation: glowLineExpand 2s ease-out forwards;
+  margin: 0 auto;
+}
+@keyframes glowLineExpand {
+  from { width: 0; opacity: 0; }
+  to { width: 100%; opacity: 1; }
+}
+
+/* Card hover lift effect */
+.card-hover-lift {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.card-hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(139, 0, 0, 0.1);
+}
+
+/* Ornate icon glow for decorative SVGs */
+.ornate-icon {
+  filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.3));
+}
+
+/* Section accent top gradient */
+.section-accent-top {
+  position: relative;
+}
+.section-accent-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: radial-gradient(ellipse at center, rgba(139, 0, 0, 0.4) 0%, transparent 70%);
+}
+
+/* Vignette pulse animation around hero title */
+@keyframes vignettePulse {
+  0%, 100% {
+    box-shadow: 0 0 60px 20px rgba(139, 0, 0, 0.05), 0 0 120px 40px rgba(45, 27, 61, 0.03);
+  }
+  50% {
+    box-shadow: 0 0 80px 30px rgba(139, 0, 0, 0.1), 0 0 160px 60px rgba(45, 27, 61, 0.06);
+  }
+}
+.vignette-pulse {
+  animation: vignettePulse 4s ease-in-out infinite;
+  border-radius: 9999px;
+}
+
+/* Scroll key icon animation */
+@keyframes keyFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(2deg); }
+  50% { transform: translateY(-6px) rotate(0deg); }
+  75% { transform: translateY(-3px) rotate(-2deg); }
+}
+.scroll-key {
+  animation: keyFloat 3s ease-in-out infinite;
+}
+
+/* Footer quote fade */
+@keyframes footerQuoteFade {
+  0%, 10% { opacity: 0; transform: translateY(5px); }
+  20%, 80% { opacity: 1; transform: translateY(0); }
+  90%, 100% { opacity: 0; transform: translateY(-5px); }
+}
+
+/* Mobile safe area padding */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Responsive horizontal scroll hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================================
+   LoveCounter — Pulsing glow around the counter card
+   ============================================================ */
+@keyframes loveCounterGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 8px rgba(201, 168, 76, 0.06),
+      0 0 20px rgba(139, 0, 0, 0.04),
+      inset 0 0 12px rgba(139, 0, 0, 0.03);
+  }
+  50% {
+    box-shadow:
+      0 0 16px rgba(201, 168, 76, 0.12),
+      0 0 40px rgba(139, 0, 0, 0.08),
+      inset 0 0 20px rgba(139, 0, 0, 0.06);
+  }
+}
+.love-counter-glow {
+  animation: loveCounterGlow 4s ease-in-out infinite;
+}
+
+/* ============================================================
+   InteractiveCandle — Flame flicker animation
+   ============================================================ */
+@keyframes candleFlicker {
+  0%   { transform: scaleX(1) scaleY(1) translateY(0); opacity: 1; }
+  15%  { transform: scaleX(0.95) scaleY(1.02) translateY(-1px); opacity: 0.95; }
+  30%  { transform: scaleX(1.03) scaleY(0.97) translateY(1px); opacity: 1; }
+  45%  { transform: scaleX(0.97) scaleY(1.04) translateY(-0.5px); opacity: 0.9; }
+  60%  { transform: scaleX(1.02) scaleY(0.98) translateY(0.5px); opacity: 1; }
+  75%  { transform: scaleX(0.98) scaleY(1.01) translateY(-0.5px); opacity: 0.93; }
+  100% { transform: scaleX(1) scaleY(1) translateY(0); opacity: 1; }
+}
+.candle-flicker {
+  animation: candleFlicker 0.8s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+/* Candle warm glow effect */
+.candle-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 170, 0, 0.08) 0%,
+    rgba(255, 140, 0, 0.04) 30%,
+    rgba(139, 0, 0, 0.02) 50%,
+    transparent 70%
+  );
+  animation: candleGlowPulse 3s ease-in-out infinite;
+}
+@keyframes candleGlowPulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+/* Smoke rise particle animation */
+.smoke-rise {
+  animation: smokeRise 4s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes smokeRise {
+  0% {
+    opacity: 0.5;
+    transform: translateY(0) translateX(0) scale(0.5);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translateY(-20px) translateX(5px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px) translateX(-3px) scale(1.5);
+    filter: blur(3px);
+  }
+}
+
+/* ============================================================
+   SecretMessage — Floating animation for sealed envelope
+   ============================================================ */
+@keyframes secretMessageFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+.secret-message-float {
+  animation: secretMessageFloat 5s ease-in-out infinite;
+}
+
+/* SecretMessage — Pulsing glow around wax seal */
+@keyframes secretSealGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 10px rgba(139, 0, 0, 0.15),
+      0 0 25px rgba(201, 168, 76, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(139, 0, 0, 0.35),
+      0 0 40px rgba(201, 168, 76, 0.12),
+      0 0 60px rgba(139, 0, 0, 0.1);
+  }
+}
+.secret-seal-glow {
+  animation: secretSealGlow 3s ease-in-out infinite;
+}
+
+/* ============================================================
+   Gothic Loading Skeleton — Animated shimmer for content loading
+   ============================================================ */
+@keyframes gothicSkeletonShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.gothic-skeleton {
+  background: linear-gradient(
+    90deg,
+    #1a1a1a 25%,
+    #222222 37%,
+    #1a1a1a 63%
+  );
+  background-size: 200% 100%;
+  animation: gothicSkeletonShimmer 2s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   Cursor Sparkle Trail — Gold/red sparkle particles on mouse
+   ============================================================ */
+@keyframes sparkleFade {
+  0% { opacity: 1; transform: scale(0) rotate(0deg); }
+  50% { opacity: 0.8; transform: scale(1) rotate(180deg); }
+  100% { opacity: 0; transform: scale(0.5) rotate(360deg); }
+}
+.cursor-sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  animation: sparkleFade 0.8s ease-out forwards;
+}
+
+/* ============================================================
+   Bat Silhouette — Decorative animated bat for hero section
+   ============================================================ */
+@keyframes batFly {
+  0% { transform: translateX(-100px) translateY(0) scaleX(1); }
+  25% { transform: translateX(0) translateY(-15px) scaleX(1); }
+  50% { transform: translateX(25vw) translateY(-30px) scaleX(1); }
+  75% { transform: translateX(50vw) translateY(-15px) scaleX(1); }
+  100% { transform: translateX(110vw) translateY(0) scaleX(1); }
+}
+.bat-fly {
+  animation: batFly 20s linear infinite;
+  opacity: 0.06;
+}
+
+/* ============================================================
+   Raven Silhouette — For atmosphere in hero
+   ============================================================ */
+@keyframes ravenSoar {
+  0% { transform: translateX(-80px) translateY(20px); }
+  50% { transform: translateX(50vw) translateY(-10px); }
+  100% { transform: translateX(110vw) translateY(20px); }
+}
+.raven-soar {
+  animation: ravenSoar 30s linear infinite;
+  opacity: 0.04;
+}
+
+/* ============================================================
+   Mist Layer — Animated fog/mist for hero section
+   ============================================================ */
+@keyframes mistDrift {
+  0% { transform: translateX(-5%) scaleX(1); opacity: 0.03; }
+  50% { transform: translateX(0%) scaleX(1.2); opacity: 0.06; }
+  100% { transform: translateX(5%) scaleX(1); opacity: 0.03; }
+}
+.mist-layer {
+  animation: mistDrift 12s ease-in-out infinite;
+}
+
+/* ============================================================
+   Gothic Pulse Ring — Decorative expanding ring effect
+   ============================================================ */
+@keyframes gothicPulseRing {
+  0% { transform: scale(0.8); opacity: 0.3; border-color: rgba(201, 168, 76, 0.2); }
+  50% { transform: scale(1.1); opacity: 0.1; border-color: rgba(139, 0, 0, 0.15); }
+  100% { transform: scale(0.8); opacity: 0.3; border-color: rgba(201, 168, 76, 0.2); }
+}
+.gothic-pulse-ring {
+  animation: gothicPulseRing 6s ease-in-out infinite;
+}
+
+/* ============================================================
+   Text Reveal — Clip-based text reveal animation
+   ============================================================ */
+@keyframes textReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0% 0 0); }
+}
+.text-reveal {
+  animation: textReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* ============================================================
+   Gothic Border Dots — Decorative dotted border pattern
+   ============================================================ */
+.gothic-dotted-border {
+  border: 1px dotted rgba(201, 168, 76, 0.15);
+}
+
+/* ============================================================
+   Subtle Breathing Animation for ambient elements
+   ============================================================ */
+@keyframes breathe {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.02); }
+}
+.ambient-breathe {
+  animation: breathe 8s ease-in-out infinite;
+}
+
+/* ============================================================
+   Custom Gothic Cursor — Crosshair style
+   ============================================================ */
+.gothic-cursor-active,
+.gothic-cursor-active * {
+  cursor: crosshair !important;
+}
+.gothic-cursor-active a,
+.gothic-cursor-active button,
+.gothic-cursor-active [role="button"],
+.gothic-cursor-active input,
+.gothic-cursor-active textarea,
+.gothic-cursor-active select {
+  cursor: pointer !important;
+}
+
+/* ============================================================
+   Lightning Flash Effect — Random dramatic flash
+   ============================================================ */
+@keyframes lightningFlash {
+  0% { opacity: 0; }
+  2% { opacity: 0.15; }
+  4% { opacity: 0; }
+  6% { opacity: 0.08; }
+  8% { opacity: 0; }
+  100% { opacity: 0; }
+}
+.lightning-flash {
+  animation: lightningFlash 12s ease-in-out infinite;
+}
+
+/* ============================================================
+   Memory Timeline — Vertical timeline line and node
+   ============================================================ */
+@keyframes timelineLineGrow {
+  from { height: 0; }
+  to { height: 100%; }
+}
+.timeline-line {
+  animation: timelineLineGrow 1.5s ease-out forwards;
+}
+@keyframes timelineNodeAppear {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.timeline-node {
+  animation: timelineNodeAppear 0.5s ease-out forwards;
+}
+@keyframes timelinePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(139, 0, 0, 0); }
+}
+.timeline-node-pulse {
+  animation: timelinePulse 2.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   Floating Rune Symbols — For login page atmosphere
+   ============================================================ */
+@keyframes runeFloat {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.08; }
+  90% { opacity: 0.08; }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+.floating-rune {
+  position: absolute;
+  font-family: 'Cinzel', serif;
+  color: #c9a84c;
+  pointer-events: none;
+  animation: runeFloat linear infinite;
+  user-select: none;
+}
+
+/* ============================================================
+   Poem Card Glow — Special glow for AI-generated poems
+   ============================================================ */
+@keyframes poemGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(45, 27, 61, 0.2), 0 0 30px rgba(139, 0, 0, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(45, 27, 61, 0.4), 0 0 50px rgba(139, 0, 0, 0.1), inset 0 0 15px rgba(201, 168, 76, 0.02);
+  }
+}
+.poem-card-glow {
+  animation: poemGlow 5s ease-in-out infinite;
+}
+
+/* ============================================================
+   Settings Panel Slide-in Animation
+   ============================================================ */
+@keyframes settingsSlideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.settings-slide-in {
+  animation: settingsSlideIn 0.3s ease-out forwards;
+}
+
+/* ============================================================
+   Quill Writing Effect — For poem generation
+   ============================================================ */
+@keyframes quillWrite {
+  0% { transform: rotate(-5deg) translateX(0); }
+  25% { transform: rotate(0deg) translateX(5px); }
+  50% { transform: rotate(5deg) translateX(10px); }
+  75% { transform: rotate(0deg) translateX(5px); }
+  100% { transform: rotate(-5deg) translateX(0); }
+}
+.quill-write {
+  animation: quillWrite 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   Constellation Stars — Interactive star field
+   ============================================================ */
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.5); }
+}
+.star-twinkle {
+  animation: starTwinkle ease-in-out infinite;
+}
+
+/* ============================================================
+   Gothic Checkbox/Toggle Custom
+   ============================================================ */
+.gothic-toggle {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.gothic-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #8a7e6b;
+  transition: all 0.3s ease;
+}
+.gothic-toggle.active {
+  background: #2a1a1a;
+  border-color: #8B0000;
+}
+.gothic-toggle.active::after {
+  left: 22px;
+  background: #c9a84c;
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.4);
+}
+
+/* ============================================================
+   Glass morphism panel for settings
+   ============================================================ */
+.gothic-glass {
+  background: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(42, 42, 42, 0.6);
+}
+
+/* ============================================================
+   Ink Spread — Loading/transition effect
+   ============================================================ */
+@keyframes inkSpread {
+  from { transform: scale(0); opacity: 1; }
+  to { transform: scale(4); opacity: 0; }
+}
+.ink-spread {
+  animation: inkSpread 1s ease-out forwards;
+  background: radial-gradient(circle, #8B0000 0%, transparent 70%);
+}
+
+/* ============================================================
+   Scroll Progress Bar — Gothic reading progress indicator
+   ============================================================ */
+@keyframes scrollProgressGlow {
+  0%, 100% { box-shadow: 0 0 4px rgba(201, 168, 76, 0.2); }
+  50% { box-shadow: 0 0 8px rgba(201, 168, 76, 0.4), 0 0 16px rgba(139, 0, 0, 0.1); }
+}
+.scroll-progress-glow {
+  animation: scrollProgressGlow 3s ease-in-out infinite;
+}
+
+/* ============================================================
+   GothicStarField — Shooting star animation
+   ============================================================ */
+@keyframes shootingStarFly {
+  0%   { transform: translate(0, 0);                opacity: 0; }
+  8%   { opacity: 1; }
+  70%  { opacity: 0.6; }
+  100% { transform: translate(55vw, 35vh);          opacity: 0; }
+}
+.shooting-star-fly {
+  animation: shootingStarFly linear forwards;
+  pointer-events: none;
+}
+.shooting-star-head {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #d4c5b0;
+  box-shadow:
+    0 0 6px rgba(201, 168, 76, 0.8),
+    0 0 12px rgba(201, 168, 76, 0.3);
+}
+.shooting-star-tail {
+  position: absolute;
+  top: 1px;
+  right: 2px;
+  width: 90px;
+  height: 1px;
+  background: linear-gradient(
+    to left,
+    rgba(201, 168, 76, 0.7),
+    rgba(201, 168, 76, 0.15),
+    transparent
+  );
+  transform: rotate(-32deg);
+  transform-origin: right center;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Navigation Bar — Gold shimmer underline on scroll
+   ============================================================ */
+@keyframes navUnderlineGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+.nav-gothic-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 168, 76, 0.1) 20%,
+    rgba(201, 168, 76, 0.3) 50%,
+    rgba(201, 168, 76, 0.1) 80%,
+    transparent 100%
+  );
+  animation: navUnderlineGlow 4s ease-in-out infinite;
+}
+
+/* ============================================================
+   Enhanced Button Hover — Gold ripple effect
+   ============================================================ */
+@keyframes btnGoldRipple {
+  0% { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(4); opacity: 0; }
+}
+.btn-gothic-hover {
+  position: relative;
+  overflow: hidden;
+}
+.btn-gothic-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--ripple-x, 50%) rgba(201, 168, 76, 0.08), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.btn-gothic-hover:hover::before {
+  opacity: 1;
+}
+
+/* ============================================================
+   Gothic Text Emboss — Subtle embossed text effect for headers
+   ============================================================ */
+.text-gothic-emboss {
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(201, 168, 76, 0.15),
+    0 0 40px rgba(201, 168, 76, 0.05);
+}
+
+/* ============================================================
+   Gothic Border Shimmer — Animated border glow for cards
+   ============================================================ */
+@keyframes borderShimmer {
+  0% { border-color: rgba(42, 42, 42, 1); }
+  50% { border-color: rgba(201, 168, 76, 0.2); }
+  100% { border-color: rgba(42, 42, 42, 1); }
+}
+.border-gothic-shimmer {
+  animation: borderShimmer 6s ease-in-out infinite;
+}
+
+/* ============================================================
+   Page Load Fade — Smooth fade-in on page load
+   ============================================================ */
+@keyframes pageLoadFade {
+  from { opacity: 0; filter: brightness(0.5); }
+  to { opacity: 1; filter: brightness(1); }
+}
+.page-load-fade {
+  animation: pageLoadFade 1.5s ease-out forwards;
+}
+
+/* ============================================================
+   Gothic Divider Cross — Decorative cross ornament
+   ============================================================ */
+.gothic-cross-ornament {
+  position: relative;
+  width: 1px;
+  height: 24px;
+  background: linear-gradient(to bottom, transparent, #c9a84c/30, transparent);
+}
+.gothic-cross-ornament::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #c9a84c/30, transparent);
+}
+
+/* ============================================================
+   GothicMoonPhase — Gentle floating up/down animation
+   ============================================================ */
+@keyframes moonFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.moon-float {
+  animation: moonFloat 6s ease-in-out infinite;
+}
+
+/* ============================================================
+   GothicMoonPhase — Pulsing glow effect (gold + purple)
+   ============================================================ */
+@keyframes moonGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 15px rgba(201, 168, 76, 0.1),
+      0 0 30px rgba(45, 27, 61, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 0 25px rgba(201, 168, 76, 0.2),
+      0 0 50px rgba(45, 27, 61, 0.1),
+      0 0 80px rgba(139, 0, 0, 0.05);
+  }
+}
+.moon-glow {
+  border-radius: 50%;
+  animation: moonGlow 4s ease-in-out infinite;
+}
+
+/* ============================================================
+   OracleCard — Pulsing glow around sealed card
+   ============================================================ */
+@keyframes oracleCardGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 10px rgba(201, 168, 76, 0.08),
+      0 0 25px rgba(139, 0, 0, 0.06),
+      inset 0 0 15px rgba(139, 0, 0, 0.04);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(201, 168, 76, 0.16),
+      0 0 45px rgba(139, 0, 0, 0.1),
+      0 0 70px rgba(201, 168, 76, 0.04),
+      inset 0 0 25px rgba(139, 0, 0, 0.08);
+  }
+}
+.oracle-card-glow {
+  animation: oracleCardGlow 4s ease-in-out infinite;
+}
+
+/* OracleCard — Eye pulse effect on card back */
+@keyframes oracleCardEyePulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(201, 168, 76, 0.15));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(201, 168, 76, 0.35));
+    transform: scale(1.03);
+  }
+}
+.oracle-card-eye-pulse {
+  animation: oracleCardEyePulse 3.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   DreamJournal — Custom gothic scrollbar
+   ============================================================ */
+.dream-journal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 76, 0.2) transparent;
+}
+.dream-journal-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.dream-journal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dream-journal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.2);
+  border-radius: 3px;
+}
+.dream-journal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 76, 0.4);
+}
+
+/* ============================================================
+   Round 5 Visual Polish — Enhanced gothic atmosphere
+   ============================================================ */
+
+/* Subtle horizontal parallax grain texture */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 997;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 512px 512px;
+}
+
+/* Enhanced link hover with gold underline sweep */
+.gothic-link-hover {
+  position: relative;
+  display: inline-block;
+}
+.gothic-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+  transition: width 0.4s ease, left 0.4s ease;
+}
+.gothic-link-hover:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Card depth effect on hover */
+.card-depth-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-depth-hover:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(139, 0, 0, 0.08);
+  border-color: rgba(201, 168, 76, 0.15);
+}
+
+/* Blood drop animation for decorative elements */
+@keyframes bloodDrop {
+  0% { transform: translateY(-10px) scaleY(0.8); opacity: 0; }
+  20% { opacity: 0.6; transform: translateY(0) scaleY(1); }
+  80% { opacity: 0.4; }
+  100% { transform: translateY(30px) scaleY(1.3); opacity: 0; }
+}
+.blood-drop-anim {
+  animation: bloodDrop 4s ease-in-out infinite;
+}
+
+/* Gothic input enhancement */
+input, textarea, select {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input:hover, textarea:hover, select:hover {
+  border-color: rgba(201, 168, 76, 0.2) !important;
+}
+
+/* Tooltip gothic style */
+.gothic-tooltip {
+  position: relative;
+}
+.gothic-tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  padding: 4px 10px;
+  background: rgba(17, 17, 17, 0.95);
+  border: 1px solid rgba(42, 42, 42, 0.8);
+  border-radius: 4px;
+  font-family: 'IM Fell English', serif;
+  font-size: 11px;
+  color: #8a7e6b;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.gothic-tooltip:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Subtle text glow for emphasis */
+.text-gold-glow {
+  text-shadow: 0 0 8px rgba(201, 168, 76, 0.3), 0 0 16px rgba(201, 168, 76, 0.1);
+}
+.text-blood-glow {
+  text-shadow: 0 0 8px rgba(139, 0, 0, 0.3), 0 0 16px rgba(139, 0, 0, 0.1);
+}
+
+/* Animated border gradient for special cards */
+@keyframes borderGradientRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.border-gradient-animate {
+  border-image: linear-gradient(135deg, #c9a84c, #8B0000, #2d1b3d, #c9a84c) 1;
+  background-size: 300% 300%;
+  animation: borderGradientRotate 8s ease infinite;
+}
+
+/* Pulse dot for active indicators */
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}
+.pulse-dot {
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+/* Fade in stagger for list items */
+@keyframes fadeInStagger {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Gothic divider with animated glow center */
+.divider-glow-center {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.divider-glow-center::before,
+.divider-glow-center::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.2));
+}
+.divider-glow-center::after {
+  background: linear-gradient(to left, transparent, rgba(201, 168, 76, 0.2));
+}
+
+/* Smooth button press effect */
+.btn-press:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+
+/* Enhanced card border with corner glow */
+.card-corner-glow {
+  position: relative;
+}
+.card-corner-glow::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle at top right, rgba(201, 168, 76, 0.1), transparent 70%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.card-corner-glow::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle at bottom left, rgba(139, 0, 0, 0.1), transparent 70%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Ghost text shadow for spooky headers */
+.ghost-text-shadow {
+  text-shadow:
+    0 0 1px rgba(212, 197, 176, 0.5),
+    0 0 3px rgba(212, 197, 176, 0.2),
+    0 0 10px rgba(139, 0, 0, 0.1);
+}
+
+/* Skeleton line for loading states */
+.skeleton-line {
+  height: 12px;
+  background: linear-gradient(90deg, #1a1a1a 25%, #222222 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: gothicSkeletonShimmer 1.5s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+/* Dark vignette at page edges for depth */
+.vignette-page::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* Responsive touch target for mobile */
+@media (max-width: 640px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* prefers-reduced-motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   GothicRoseGarden — Rose breathing animation
+   ============================================================ */
+.rose-breathe {
+  animation: roseBreathe 4s ease-in-out infinite;
+}
+@keyframes roseBreathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* ============================================================
+   GothicRoseGarden — Firefly floating particles
+   ============================================================ */
+.firefly-float {
+  animation: fireflyFloat 6s ease-in-out infinite;
+}
+@keyframes fireflyFloat {
+  0%, 100% { opacity: 0; transform: translate(0, 0); }
+  25% { opacity: 0.8; }
+  50% { opacity: 0.3; transform: translate(15px, -20px); }
+  75% { opacity: 0.6; transform: translate(-10px, -10px); }
+}
+
+/* ============================================================
+   Task 6 — Enhanced CSS Styling Additions
+   ============================================================ */
+
+/* --- 1. Enhanced Card Hover Effects --- */
+.card-hover-gothic {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(42, 42, 42, 0.5);
+}
+.card-hover-gothic:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 168, 76, 0.2);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(139, 0, 0, 0.05),
+    inset 0 1px 0 rgba(201, 168, 76, 0.05);
+}
+
+/* --- 2. Gothic Text Glow Variants --- */
+.text-glow-gold {
+  text-shadow: 0 0 10px rgba(201, 168, 76, 0.3), 0 0 30px rgba(201, 168, 76, 0.1);
+}
+.text-glow-blood {
+  text-shadow: 0 0 10px rgba(139, 0, 0, 0.4), 0 0 30px rgba(139, 0, 0, 0.15);
+}
+.text-glow-moon {
+  text-shadow: 0 0 10px rgba(123, 127, 168, 0.3), 0 0 30px rgba(123, 127, 168, 0.1);
+}
+
+/* --- 3. Animated Border Gradient --- */
+.border-animate-gold {
+  position: relative;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+.border-animate-gold::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(201,168,76,0.3), transparent, rgba(201,168,76,0.1), transparent);
+  z-index: -1;
+  animation: goldBorderShimmer 4s linear infinite;
+  background-size: 200% 200%;
+}
+@keyframes goldBorderShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- 4. Enhanced Paper Texture Variants --- */
+.paper-texture-aged {
+  background: linear-gradient(145deg, #1a1710 0%, #15130e 50%, #1a1710 100%);
+  position: relative;
+}
+.paper-texture-aged::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(139, 0, 0, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(201, 168, 76, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* --- 5. Gothic Section Background Patterns --- */
+.section-bg-labyrinth {
+  background-image:
+    radial-gradient(circle at 15% 85%, rgba(139, 0, 0, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(45, 27, 61, 0.04) 0%, transparent 50%);
+}
+.section-bg-candles {
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(201, 168, 76, 0.02) 0%, transparent 60%);
+}
+.section-bg-ocean {
+  background-image:
+    radial-gradient(ellipse at 50% 100%, rgba(20, 40, 80, 0.05) 0%, transparent 60%);
+}
+
+/* --- 6. Smooth Page Section Transitions --- */
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.section-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 7. Decorative Scroll Ornament --- */
+.scroll-ornament-top::before {
+  content: '❧';
+  display: block;
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgba(201, 168, 76, 0.2);
+  margin-bottom: 1rem;
+  letter-spacing: 0.5rem;
+}
+
+/* --- 8. Gothic Button Styles --- */
+.btn-gothic {
+  position: relative;
+  padding: 0.5rem 1.5rem;
+  font-family: var(--font-cinzel);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(15, 15, 15, 0.9));
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.btn-gothic:hover {
+  border-color: rgba(201, 168, 76, 0.4);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.1);
+  background: linear-gradient(135deg, rgba(30, 25, 15, 0.9), rgba(20, 18, 10, 0.9));
+}
+.btn-gothic-blood {
+  color: #d4a0a0;
+  border-color: rgba(139, 0, 0, 0.3);
+}
+.btn-gothic-blood:hover {
+  border-color: rgba(139, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.15);
+}
+
+/* --- 9. Floating Animation Variant (slower, more ethereal) --- */
+.float-ethereal {
+  animation: floatEthereal 6s ease-in-out infinite;
+}
+@keyframes floatEthereal {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-6px) rotate(0.5deg); }
+  66% { transform: translateY(-3px) rotate(-0.5deg); }
+}
+
+/* --- 10. Pulse Ring Effect --- */
+.pulse-ring {
+  position: relative;
+}
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: inherit;
+  animation: pulseRing 3s ease-out infinite;
+}
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.08); opacity: 0; }
+}
+
+/* ============================================================
+   BloodPactVows — Pact glow, seal drip, chalice glow
+   ============================================================ */
+
+/* Ambient blood-red glow around the pact card */
+.pact-glow {
+  box-shadow: 0 0 40px rgba(139, 0, 0, 0.15), 0 0 80px rgba(139, 0, 0, 0.05);
+}
+
+/* Blood drip from top on seal */
+@keyframes pactSealDrip {
+  0% { height: 0; opacity: 0; }
+  30% { opacity: 1; }
+  100% { height: 100%; opacity: 0.3; }
+}
+.pact-seal-drip {
+  animation: pactSealDrip 2s ease-out forwards;
+}
+
+/* Blood-red glow pulse on the chalice when ceremony is active */
+@keyframes chaliceGlow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(139, 0, 0, 0.4)); }
+  50% { filter: drop-shadow(0 0 20px rgba(139, 0, 0, 0.8)); }
+}
+.chalice-glow {
+  animation: chaliceGlow 3s ease-in-out infinite;
+}
+
+/* ============================================================
+   AnimatedHourglass — Sand flow animations
+   ============================================================ */
+
+/* Sand in top bulb decreases (rectangle shrinks from bottom up) */
+@keyframes hgSandTopDecrease {
+  0%   { y: 30; height: 68; opacity: 0.7; }
+  85%  { y: 30; height: 68; opacity: 0.5; }
+  100% { y: 30; height: 5;  opacity: 0.3; }
+}
+
+/* Sand pile in bottom bulb grows (ellipse expands) */
+@keyframes hgSandBottomGrow {
+  0%   { ry: 0;  cy: 202; opacity: 0.7; }
+  10%  { ry: 2;  cy: 201; opacity: 0.7; }
+  50%  { ry: 16; cy: 192; opacity: 0.7; }
+  85%  { ry: 40; cy: 170; opacity: 0.7; }
+  100% { ry: 45; cy: 162; opacity: 0.7; }
+}
+
+/* Sand stream flowing through the neck (subtle opacity pulse) */
+@keyframes hgSandStreamFlow {
+  0%   { opacity: 0.5; }
+  25%  { opacity: 0.7; }
+  50%  { opacity: 0.4; }
+  75%  { opacity: 0.65; }
+  100% { opacity: 0.5; }
+}
+
+/* Individual sand particles falling through the neck */
+@keyframes hgParticleFall {
+  0%   { cy: 52; opacity: 0; }
+  10%  { opacity: 0.8; }
+  80%  { opacity: 0.6; }
+  100% { cy: 148; opacity: 0; }
+}
+
+/* Subtle gold glow emanating from the sand stream neck */
+@keyframes hgNeckGlow {
+  0%, 100% {
+    opacity: 0.03;
+    filter: blur(2px);
+  }
+  50% {
+    opacity: 0.08;
+    filter: blur(4px);
+  }
+}
+
+/* Hourglass pulsing shadow beneath */
+@keyframes hgPulseShadow {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scaleX(1.05);
+  }
+}
+
+/* ============================================================
+   GothicTarotReading — Pulsing glow for face-down tarot cards
+   ============================================================ */
+@keyframes tarotCardGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 12px rgba(201, 168, 76, 0.06),
+      0 0 30px rgba(45, 27, 61, 0.05),
+      inset 0 0 18px rgba(139, 0, 0, 0.03);
+  }
+  50% {
+    box-shadow:
+      0 0 22px rgba(201, 168, 76, 0.14),
+      0 0 50px rgba(45, 27, 61, 0.1),
+      0 0 80px rgba(139, 0, 0, 0.05),
+      inset 0 0 28px rgba(139, 0, 0, 0.06);
+  }
+}
+.tarot-card-glow {
+  animation: tarotCardGlow 4.5s ease-in-out infinite;
+}
+
+/* GothicTarotReading — Pentagram subtle glow on card back */
+@keyframes tarotPentagramPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.1));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.25));
+    transform: scale(1.02);
+  }
+}
+.tarot-pentagram-glow {
+  animation: tarotPentagramPulse 3.5s ease-in-out infinite;
+}
+
+/* ─── Round 5: Additional Styling Polish ─── */
+
+/* Enhanced gothic button hover with ripple effect */
+.gothic-btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.gothic-btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.08), transparent);
+  transform: skewX(-15deg);
+  transition: left 0.6s ease;
+}
+.gothic-btn-shine:hover::after {
+  left: 120%;
+}
+
+/* Parallax scroll depth effect for section backgrounds */
+.parallax-section {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Enhanced text gradient for section titles */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #c9a84c 0%, #f0d88a 30%, #c9a84c 50%, #8a7234 70%, #c9a84c 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldGradientShift 6s ease infinite;
+}
+
+@keyframes goldGradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Gothic card border shimmer */
+.card-border-shimmer {
+  position: relative;
+}
+.card-border-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    var(--shimmer-angle, 0deg),
+    transparent 30%,
+    rgba(201, 168, 76, 0.3) 45%,
+    rgba(201, 168, 76, 0.6) 50%,
+    rgba(201, 168, 76, 0.3) 55%,
+    transparent 70%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderShimmer 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes borderShimmer {
+  0% { --shimmer-angle: 0deg; }
+  100% { --shimmer-angle: 360deg; }
+}
+
+@property --shimmer-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Floating particles for ambient sections */
+.ambient-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: ambientFloat 8s ease-in-out infinite;
+}
+
+@keyframes ambientFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) scale(1.1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-5px) scale(0.95);
+    opacity: 0.2;
+  }
+  75% {
+    transform: translateY(-30px) translateX(15px) scale(1.05);
+    opacity: 0.4;
+  }
+}
+
+/* Gothic image hover zoom with vignette */
+.gothic-image-hover {
+  overflow: hidden;
+  position: relative;
+}
+.gothic-image-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.gothic-image-hover:hover::after {
+  opacity: 0.6;
+}
+.gothic-image-hover img,
+.gothic-image-hover > div:first-child {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.gothic-image-hover:hover img,
+.gothic-image-hover:hover > div:first-child {
+  transform: scale(1.05);
+}
+
+/* Blood drip animation for dividers */
+.blood-divider-drip {
+  position: relative;
+}
+.blood-divider-drip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 2px;
+  height: 0;
+  background: linear-gradient(to bottom, #8B0000, transparent);
+  animation: dripDown 3s ease-in-out infinite;
+  border-radius: 0 0 2px 2px;
+}
+
+@keyframes dripDown {
+  0%, 100% { height: 0; opacity: 0; }
+  10% { height: 12px; opacity: 0.6; }
+  60% { height: 25px; opacity: 0.3; }
+  80% { height: 30px; opacity: 0; }
+}
+
+/* Enhanced gothic glass morphism */
+.gothic-glass-enhanced {
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(201, 168, 76, 0.08);
+  box-shadow: 
+    0 0 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(201, 168, 76, 0.05);
+}
+
+/* Flickering candle light effect on text */
+.text-candle-flicker {
+  animation: candleTextFlicker 3s ease-in-out infinite alternate;
+}
+
+@keyframes candleTextFlicker {
+  0% { text-shadow: 0 0 4px rgba(201, 168, 76, 0.1), 0 0 8px rgba(139, 0, 0, 0.05); }
+  25% { text-shadow: 0 0 6px rgba(201, 168, 76, 0.2), 0 0 12px rgba(139, 0, 0, 0.08); }
+  50% { text-shadow: 0 0 3px rgba(201, 168, 76, 0.15), 0 0 6px rgba(139, 0, 0, 0.03); }
+  75% { text-shadow: 0 0 8px rgba(201, 168, 76, 0.25), 0 0 16px rgba(139, 0, 0, 0.1); }
+  100% { text-shadow: 0 0 5px rgba(201, 168, 76, 0.18), 0 0 10px rgba(139, 0, 0, 0.06); }
+}
+
+/* Ornate underline for section headers */
+.ornate-underline {
+  position: relative;
+  display: inline-block;
+}
+.ornate-underline::after {
+  content: '◆';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  font-size: 6px;
+  color: #c9a84c;
+  opacity: 0.4;
+}
+.ornate-underline::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+  opacity: 0.3;
+}
+
+/* ============================================================
+   GothicGraveyardRoses — Fog drift animation for graveyard
+   ============================================================ */
+@keyframes graveyardFog {
+  0% { transform: translateX(-3%); opacity: 0.6; }
+  25% { transform: translateX(1%); opacity: 0.8; }
+  50% { transform: translateX(3%); opacity: 0.5; }
+  75% { transform: translateX(-1%); opacity: 0.7; }
+  100% { transform: translateX(-3%); opacity: 0.6; }
+}
+.graveyard-fog {
+  animation: graveyardFog 15s ease-in-out infinite;
+}
+
+/* ============================================================
+   GothicConstellationMap — Interactive star constellation
+   ============================================================ */
+
+/* Constellation star interactive hover */
+.constellation-star-group {
+  cursor: pointer;
+}
+.constellation-star-group:focus-visible circle {
+  outline: 2px solid rgba(201, 168, 76, 0.5);
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+/* Constellation map container glow when complete */
+@keyframes constellationReveal {
+  0% {
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.05), 0 0 40px rgba(139, 0, 0, 0.03);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.15), 0 0 60px rgba(139, 0, 0, 0.08), inset 0 0 20px rgba(201, 168, 76, 0.02);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.05), 0 0 40px rgba(139, 0, 0, 0.03);
+  }
+}
+.constellation-complete-glow {
+  animation: constellationReveal 4s ease-in-out infinite;
+  border-radius: 12px;
+}
+
+/* Constellation line draw animation */
+@keyframes constellationLineDraw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* ─── Round 6: Additional Micro-interactions & Polish ─── */
+
+/* Page-wide smooth scroll for internal links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced gothic link hover effect */
+a, [role="button"] {
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+/* Gothic focus ring for accessibility */
+:focus-visible {
+  outline: 1px solid rgba(201, 168, 76, 0.5);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.1);
+}
+
+/* Smooth image loading fade */
+img {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+img.loaded {
+  opacity: 1;
+}
+
+/* Gothic tooltip */
+[data-tooltip] {
+  position: relative;
+}
+[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  background: rgba(15, 15, 15, 0.95);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  color: #c9a84c;
+  font-family: var(--font-cinzel);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+  animation: tooltipFadeIn 0.2s ease;
+}
+
+@keyframes tooltipFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Gothic selection for text */
+::selection {
+  background: rgba(139, 0, 0, 0.3);
+  color: #d4c5b0;
+}
+
+/* Elegant scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #2a2a2a, #3a3a3a);
+  border-radius: 4px;
+  border: 1px solid #1a1a1a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #3a3a3a, #4a4a4a);
+}
+
+/* Subtle page entrance animation */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    filter: brightness(0.8);
+  }
+  to {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+/* Gothic card hover effect */
+.gothic-card-hover {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+.gothic-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3),
+              0 0 15px rgba(139, 0, 0, 0.05);
+}
+
+/* Text reveal animation for headings */
+@keyframes headingReveal {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Gothic separator with drip */
+.gothic-separator-drip {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.2), rgba(139, 0, 0, 0.15), rgba(201, 168, 76, 0.2), transparent);
+}
+
+/* Pulse ring for interactive elements */
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.3);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(201, 168, 76, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(201, 168, 76, 0);
+  }
+}
+
+.pulse-ring {
+  animation: pulseRing 2s ease infinite;
+}
+
+/* Gothic shimmer text effect for loading */
+@keyframes textShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.text-shimmer-loading {
+  background: linear-gradient(90deg, #3a3a3a 25%, #5a5a5a 50%, #3a3a3a 75%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 2s linear infinite;
+}
+
+/* ============================================================
+   CSS Enhancement Pack — 18 New Visual Utility Styles
+   Appended for gothic romantic atmosphere enrichment
+   ============================================================ */
+
+/* ─── 1. Gothic Card Hover: Gold Border Glow + Shadow Lift ─── */
+@keyframes gothicCardBorderGlow {
+  0%   { border-color: rgba(42, 42, 42, 0.6); }
+  40%  { border-color: rgba(201, 168, 76, 0.35); }
+  100% { border-color: rgba(42, 42, 42, 0.6); }
+}
+.gothic-card-hover {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+  border: 1px solid rgba(42, 42, 42, 0.6);
+}
+.gothic-card-hover:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201, 168, 76, 0.35);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(201, 168, 76, 0.08),
+    0 0 60px rgba(201, 168, 76, 0.04),
+    inset 0 1px 0 rgba(201, 168, 76, 0.08);
+}
+
+/* ─── 2. Pulsing Border Animation ─── */
+@keyframes pulseBorderGold {
+  0%, 100% {
+    border-color: rgba(201, 168, 76, 0.1);
+    box-shadow: 0 0 0 0 rgba(201, 168, 76, 0);
+  }
+  50% {
+    border-color: rgba(201, 168, 76, 0.4);
+    box-shadow: 0 0 12px rgba(201, 168, 76, 0.1);
+  }
+}
+.pulse-border {
+  animation: pulseBorderGold 3s ease-in-out infinite;
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* ─── 3. Text Gradient Animation (Gold ↔ White shift) ─── */
+@keyframes gradientTextShift {
+  0%   { background-position: 0% 50%; }
+  25%  { background-position: 50% 50%; }
+  50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.text-gradient-animate {
+  background: linear-gradient(
+    270deg,
+    #c9a84c 0%,
+    #f0dca0 20%,
+    #ffffff 40%,
+    #f0dca0 60%,
+    #c9a84c 80%,
+    #8a7234 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientTextShift 6s ease infinite;
+}
+
+/* ─── 4. Gothic Input Focus: Enhanced Gold Glow ─── */
+.gothic-input-focus {
+  background: rgba(10, 10, 10, 0.8);
+  border: 1px solid rgba(42, 42, 42, 0.8);
+  color: #d4c5b0;
+  font-family: 'IM Fell English', serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  outline: none;
+}
+.gothic-input-focus:hover {
+  border-color: rgba(201, 168, 76, 0.2);
+}
+.gothic-input-focus:focus {
+  border-color: rgba(201, 168, 76, 0.5);
+  box-shadow:
+    0 0 0 1px rgba(201, 168, 76, 0.1),
+    0 0 20px rgba(201, 168, 76, 0.08),
+    0 0 40px rgba(139, 0, 0, 0.04);
+  background: rgba(15, 15, 15, 0.9);
+}
+.gothic-input-focus::placeholder {
+  color: rgba(138, 126, 107, 0.4);
+  font-style: italic;
+}
+
+/* ─── 5. Floating Animation Variants ─── */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes floatMedium {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes floatFast {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+.float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+.float-medium {
+  animation: floatMedium 4s ease-in-out infinite;
+}
+.float-fast {
+  animation: floatFast 2.5s ease-in-out infinite;
+}
+
+/* ─── 6. Gothic Button Styles ─── */
+.gothic-btn-primary {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.625rem 1.75rem;
+  color: #0a0a0a;
+  background: linear-gradient(135deg, #c9a84c, #b8953f);
+  border: 1px solid #c9a84c;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(201, 168, 76, 0.15);
+}
+.gothic-btn-primary:hover {
+  background: linear-gradient(135deg, #d4b85c, #c9a84c);
+  box-shadow: 0 0 25px rgba(201, 168, 76, 0.25), 0 4px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
+}
+.gothic-btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.15);
+}
+
+.gothic-btn-secondary {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.625rem 1.75rem;
+  color: #c9a84c;
+  background: transparent;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.gothic-btn-secondary:hover {
+  border-color: rgba(201, 168, 76, 0.6);
+  color: #f0dca0;
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.1), inset 0 0 20px rgba(201, 168, 76, 0.03);
+  background: rgba(201, 168, 76, 0.04);
+  transform: translateY(-1px);
+}
+.gothic-btn-secondary:active {
+  transform: translateY(0);
+}
+
+.gothic-btn-danger {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.625rem 1.75rem;
+  color: #d4a0a0;
+  background: linear-gradient(135deg, #8B0000, #6e0000);
+  border: 1px solid rgba(139, 0, 0, 0.5);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(139, 0, 0, 0.1);
+}
+.gothic-btn-danger:hover {
+  background: linear-gradient(135deg, #a00000, #8B0000);
+  box-shadow: 0 0 25px rgba(139, 0, 0, 0.2), 0 4px 15px rgba(0, 0, 0, 0.3);
+  color: #f0b0b0;
+  transform: translateY(-1px);
+}
+.gothic-btn-danger:active {
+  transform: translateY(0);
+}
+
+/* ─── 7. Shimmer Text Effect ─── */
+@keyframes shimmerSweep {
+  0%   { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer-text {
+  position: relative;
+  display: inline-block;
+  color: #8a7e6b;
+  overflow: hidden;
+}
+.shimmer-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(201, 168, 76, 0.4) 45%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(201, 168, 76, 0.4) 55%,
+    transparent 65%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerSweep 3s ease-in-out infinite;
+}
+
+/* ─── 8. Gothic Badge/Tag ─── */
+.gothic-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  background: rgba(10, 10, 10, 0.9);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-radius: 9999px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+.gothic-badge:hover {
+  border-color: rgba(201, 168, 76, 0.45);
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.08);
+  background: rgba(201, 168, 76, 0.05);
+}
+.gothic-badge::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #c9a84c;
+  flex-shrink: 0;
+}
+
+/* ─── 9. Glass Morphism Dark Variant ─── */
+.gothic-glass-dark {
+  background: rgba(8, 8, 8, 0.9);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+  border: 1px solid rgba(42, 42, 42, 0.4);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02),
+    inset 0 0 30px rgba(139, 0, 0, 0.02);
+}
+
+/* ─── 10. Section Reveal Animation ─── */
+@keyframes sectionRevealUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.section-reveal {
+  opacity: 0;
+  animation: sectionRevealUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.section-reveal.delay-1 { animation-delay: 0.15s; }
+.section-reveal.delay-2 { animation-delay: 0.3s; }
+.section-reveal.delay-3 { animation-delay: 0.45s; }
+.section-reveal.delay-4 { animation-delay: 0.6s; }
+
+/* ─── 11. Ornamental Underline (Center Diamond) ─── */
+.ornate-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+.ornate-underline::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201, 168, 76, 0.15) 15%, rgba(201, 168, 76, 0.35) 50%, rgba(201, 168, 76, 0.15) 85%, transparent 100%);
+}
+.ornate-underline::after {
+  content: '◆';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  color: #c9a84c;
+  opacity: 0.5;
+  text-shadow: 0 0 6px rgba(201, 168, 76, 0.3);
+}
+
+/* ─── 12. Gothic Tooltip with Pointed Arrow ─── */
+@keyframes tooltipFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(5px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.gothic-tooltip {
+  position: relative;
+}
+.gothic-tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  padding: 6px 12px;
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-radius: 4px;
+  font-family: 'IM Fell English', serif;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: #c9a84c;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.gothic-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgba(201, 168, 76, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 100;
+}
+.gothic-tooltip:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.gothic-tooltip:hover::after {
+  opacity: 1;
+}
+
+/* ─── 13. Gothic Horizontal Scrollbar ─── */
+.gothic-scrollbar-h {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 76, 0.2) rgba(10, 10, 10, 0.5);
+}
+.gothic-scrollbar-h::-webkit-scrollbar {
+  height: 6px;
+}
+.gothic-scrollbar-h::-webkit-scrollbar-track {
+  background: rgba(10, 10, 10, 0.5);
+  border-radius: 3px;
+}
+.gothic-scrollbar-h::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, rgba(201, 168, 76, 0.15), rgba(201, 168, 76, 0.3), rgba(201, 168, 76, 0.15));
+  border-radius: 3px;
+  border: 1px solid rgba(201, 168, 76, 0.08);
+}
+.gothic-scrollbar-h::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, rgba(201, 168, 76, 0.3), rgba(201, 168, 76, 0.5), rgba(201, 168, 76, 0.3));
+  box-shadow: 0 0 6px rgba(201, 168, 76, 0.15);
+}
+
+/* ─── 14. Gothic Ripple Effect (Blood-Red) ─── */
+@keyframes rippleExpand {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+.gothic-ripple {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.gothic-ripple .ripple-circle {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 0, 0, 0.35) 0%, rgba(139, 0, 0, 0.1) 60%, transparent 100%);
+  transform: scale(0);
+  pointer-events: none;
+  animation: rippleExpand 0.6s ease-out forwards;
+}
+
+/* ─── 15. Typing Cursor (Blinking Gold) ─── */
+@keyframes typingCursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: #c9a84c;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: typingCursorBlink 1s step-end infinite;
+  box-shadow: 0 0 4px rgba(201, 168, 76, 0.4);
+}
+
+/* ─── 16. Parallax Depth Layers ─── */
+.parallax-slow {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+.parallax-fast {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* ─── 17. Gothic Progress Ring (CSS-only) ─── */
+.gothic-progress-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.gothic-progress-ring svg {
+  transform: rotate(-90deg);
+}
+.gothic-progress-ring .ring-bg {
+  fill: none;
+  stroke: rgba(42, 42, 42, 0.5);
+  stroke-width: 3;
+}
+.gothic-progress-ring .ring-fill {
+  fill: none;
+  stroke: #c9a84c;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 3px rgba(201, 168, 76, 0.3));
+}
+.gothic-progress-ring .ring-label {
+  position: absolute;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  color: #c9a84c;
+  letter-spacing: 0.05em;
+}
+
+/* ─── 18. Morse Code Blink (Telegraph-Style) ─── */
+@keyframes morseBlinkDot {
+  0%, 40%  { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes morseBlinkDash {
+  0%, 70%  { opacity: 1; }
+  80%, 100% { opacity: 0; }
+}
+.morse-blink {
+  animation: morseBlinkDot 1.2s ease-in-out infinite;
+}
+.morse-blink-dash {
+  animation: morseBlinkDash 1.2s ease-in-out infinite;
+}
+
+/* ============================================================
+   Round 6 — Login, Hero, Footer Gothic Enhancements
+   ============================================================ */
+
+/* Pentagram slow drift for login background */
+@keyframes pentagramDrift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(3px, -2px) rotate(0.5deg); }
+  50%  { transform: translate(-2px, 3px) rotate(-0.3deg); }
+  75%  { transform: translate(2px, 2px) rotate(0.2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+.pentagram-drift {
+  animation: pentagramDrift 20s ease-in-out infinite;
+}
+
+/* Blood drip from button on hover */
+.login-blood-btn {
+  position: relative;
+  overflow: visible;
+}
+.login-blood-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 20%;
+  right: 20%;
+  height: 0;
+  background: linear-gradient(to bottom, #8B0000, rgba(139, 0, 0, 0.6), transparent);
+  border-radius: 0 0 4px 4px;
+  transition: height 0.6s ease, opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+.login-blood-btn:hover::after {
+  height: 18px;
+  opacity: 1;
+}
+
+/* Ember / dust particle floating upward */
+@keyframes emberRise {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+}
+.ember-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: emberRise linear infinite;
+}
+
+/* Hero letterbox bars */
+.letterbox-top,
+.letterbox-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: #000;
+  z-index: 20;
+  pointer-events: none;
+}
+.letterbox-top    { top: 0; }
+.letterbox-bottom { bottom: 0; }
+
+/* Gothic animated frame border around hero */
+@keyframes gothicFramePulse {
+  0%, 100% {
+    box-shadow:
+      inset 0 0 30px rgba(0, 0, 0, 0.5),
+      inset 0 0 60px rgba(139, 0, 0, 0.03),
+      0 0 1px rgba(201, 168, 76, 0.08);
+  }
+  50% {
+    box-shadow:
+      inset 0 0 40px rgba(0, 0, 0, 0.6),
+      inset 0 0 80px rgba(139, 0, 0, 0.06),
+      0 0 2px rgba(201, 168, 76, 0.15);
+  }
+}
+.hero-gothic-frame {
+  animation: gothicFramePulse 6s ease-in-out infinite;
+  border: 1px solid rgba(201, 168, 76, 0.06);
+}
+
+/* Footer symbol staggered fade-in */
+@keyframes footerSymbolFade {
+  0%   { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.footer-symbol-anim {
+  animation: footerSymbolFade 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Footer diamond pattern overlay */
+.footer-pattern-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image:
+    linear-gradient(45deg, #c9a84c 1px, transparent 1px),
+    linear-gradient(-45deg, #c9a84c 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Scroll-to-top gold underline hover */
+.scroll-top-link {
+  position: relative;
+  display: inline-block;
+  color: #8a7e6b;
+  transition: color 0.3s ease;
+}
+.scroll-top-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #c9a84c, rgba(201, 168, 76, 0.3));
+  transition: width 0.4s ease;
+}
+.scroll-top-link:hover {
+  color: #c9a84c;
+}
+.scroll-top-link:hover::after {
+  width: 100%;
+}

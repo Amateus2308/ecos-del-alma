@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecos del Alma — Memorias del Laberinto y la Luz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600&family=IM+Fell+English:ital@0;1&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="blood-drip"></div>
+<div class="scanline"></div>
+<canvas id="particles"></canvas>
+
+<!-- HERO -->
+<section class="hero" id="top">
+    <div class="pentagram-bg">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#8B0000" stroke-width="0.8">
+            <circle cx="200" cy="200" r="180"/>
+            <circle cx="200" cy="200" r="140"/>
+            <polygon points="200,30 380,340 30,130 370,130 20,340" fill="none"/>
+        </svg>
+    </div>
+
+    <div class="hero-eyebrow">Memorias del Laberinto y la Luz</div>
+    <h1 class="hero-title glitch" data-text="Ecos del Alma">Ecos del Alma</h1>
+    <p class="hero-subtitle">"Lo que no me mata, me hace cuestionar por qué sigo en pie."</p>
+
+    <div class="hero-ornament">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond"></div>
+        <div class="ornament-line right"></div>
+    </div>
+</section>
+
+<!-- NAVEGACIÓN DINÁMICA -->
+<nav class="chapter-nav" id="main-nav"></nav>
+
+<!-- CONTENEDOR DE CARTAS DINÁMICAS -->
+<main id="content-manager">
+    <!-- El JS inyectará las cartas aquí -->
+</main>
+
+<!-- SECCIÓN DE GALERÍA CON SLIDER AVANZADO -->
+<section class="gallery-container">
+    <h2 class="gallery-title">Fragmentos Visuales</h2>
+    <div class="slider-viewport">
+        <button class="slider-nav prev" id="prevBtn">&#10094;</button>
+        <div class="slider-track" id="photo-slider">
+            <!-- Las fotos se cargan aquí -->
+        </div>
+        <button class="slider-nav next" id="nextBtn">&#10095;</button>
+    </div>
+    <div class="slider-dots" id="sliderDots"></div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close">✕</button>
+    <img id="lightboxImg" src="" alt="">
+</div>
+
+<footer class="site-footer">
+    <div class="footer-ornament">⚰</div>
+    <p class="footer-text" id="footer-quote"></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
