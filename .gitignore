@@ -38,3 +38,6 @@ npm-debug.log*
 skills/
 examples/
 mini-services/
+prisma/ecos.db
+prisma/*.db
+*.db
