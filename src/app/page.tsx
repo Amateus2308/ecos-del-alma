@@ -29,7 +29,6 @@ import LoveCounter from '@/components/gothic/LoveCounter';
 import InteractiveCandle from '@/components/gothic/InteractiveCandle';
 import MemoryTimeline from '@/components/gothic/MemoryTimeline';
 import AmbientSettings from '@/components/gothic/AmbientSettings';
-import LovePoemGenerator from '@/components/gothic/LovePoemGenerator';
 import ScrollProgressBar from '@/components/gothic/ScrollProgressBar';
 import GothicStarField from '@/components/gothic/GothicStarField';
 import BackgroundAmbientSounds from '@/components/gothic/BackgroundAmbientSounds';
@@ -833,7 +832,6 @@ export default function HomePage() {
   sectionNav.push({ id: 'section-tarot', label: 'Tarot' });
   sectionNav.push({ id: 'section-love-test', label: 'Test' });
   sectionNav.push({ id: 'section-timeline', label: 'Cronología' });
-  sectionNav.push({ id: 'section-poem', label: 'Poesía' });
   sectionNav.push({ id: 'section-writing', label: 'Ritual' });
   sectionNav.push({ id: 'section-constellation', label: 'Estrellas' });
   sectionNav.push({ id: 'section-lanterns', label: 'Linternas' });
@@ -1474,31 +1472,7 @@ export default function HomePage() {
 
         <SectionTransition variant="blood" />
 
-        {/* ─── Love Poem Generator Section ─── */}
-        <section id="section-poem" className="max-w-3xl mx-auto px-3 sm:px-4 py-12 scroll-mt-16 section-accent-top">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.p
-              className="font-[family-name:var(--font-cinzel)] text-[#c9a84c]/30 text-[10px] uppercase tracking-[0.3em] text-center mb-2"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Capítulo VI — Versos
-            </motion.p>
-            <GothicDivider text="Poesía del Alma" />
-            <p className="font-[family-name:var(--font-fell)] italic text-[#5a5040] text-xs sm:text-sm text-center mt-2 tracking-wide">
-              Versos nacidos de los ecos de nuestro laberinto
-            </p>
-          </motion.div>
-          <LovePoemGenerator />
-        </section>
 
-        <SectionTransition variant="blood" />
 
         {/* ─── Writing Ritual Section ─── */}
         <section id="section-writing" className="max-w-3xl mx-auto px-3 sm:px-4 py-16 scroll-mt-16 section-accent-top">

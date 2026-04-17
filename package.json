@@ -18,6 +18,7 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@hookform/resolvers": "^5.1.1",
     "@mdxeditor/editor": "^3.39.1",
+    "@prisma/adapter-libsql": "^6.11.1",
     "@prisma/client": "^6.11.1",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",
@@ -78,8 +79,8 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^13.0.0",
+    "@libsql/client": "^0.14.0",
     "vaul": "^1.1.2",
-    "z-ai-web-dev-sdk": "^0.0.17",
     "zod": "^4.0.2",
     "zustand": "^5.0.6"
   },
