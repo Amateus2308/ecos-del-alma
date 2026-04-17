@@ -890,3 +890,31 @@ Current Project Assessment:
   6. Dark ritual page transition animation between sections
   7. Consider adding music upload and testing audio playback end-to-end
   8. Add more constellation patterns or let users save their creation
+---
+Task ID: 8
+Agent: Main Developer
+Task: Preparar despliegue en Vercel — eliminar dependencias sandbox, agregar soporte Turso
+
+Work Log:
+- Verificado que el repositorio GitHub tiene todos los archivos del proyecto (16+ componentes gothic, 15+ API routes, prisma schema, seeds, stores, hooks, libs)
+- Eliminado z-ai-web-dev-sdk de package.json (paquete que solo existe en el sandbox, no en Vercel)
+- Eliminado src/app/api/poem/route.ts (API que importaba z-ai-web-dev-sdk para generar poemas con IA)
+- Eliminado src/components/gothic/LovePoemGenerator.tsx (componente que llamaba a /api/poem)
+- Removidas referencias a LovePoemGenerator de page.tsx (import, sección de poesía, nav item)
+- Agregado serverExternalPackages: ["@libsql/client"] en next.config.ts para compatibilidad Vercel
+- Reescrito src/lib/db.ts con soporte condicional Turso:
+  - Si DATABASE_AUTH_TOKEN existe y URL empieza con "libsql:" → usa @prisma/adapter-libsql
+  - Si no → usa SQLite local normal
+- Agregados @prisma/adapter-libsql y @libsql/client como dependencias en package.json
+- Actualizado .env.example con documentación de vars Turso para Vercel
+- Eliminado archivo basura "--timeout" del repo
+- bun install exitoso (913 paquetes)
+- bun run lint: 0 errores
+- Dev server compiló y sirvió correctamente (HTTP 200 en /)
+- Push a GitHub: commit b9b6698
+
+Stage Summary:
+- Proyecto listo para despliegue en Vercel con Turso
+- Sin dependencias sandbox-only
+- db.ts soporta SQLite local y Turso automáticamente
+- Limpieza completa de z-ai-web-dev-sdk y dependencias
