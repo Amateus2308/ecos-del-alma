@@ -1,209 +1,15 @@
 // Script para llenar todo el contenido faltante de la aplicación
-// Poemas, Botellas (LoveNotes), Susurros, Sueños, Línea del Tiempo, Candados de Amor
+// NOTA: Los poemas del 2026 se crean con seed-poems-2026.ts
+// Botellas (LoveNotes), Susurros, Sueños, Línea del Tiempo, Candados de Amor
 // Ejecutar con: bun run seed-content.ts
 
 import { db } from './src/lib/db';
 
 async function seedContent() {
   console.log('📜 Poblando Ecos del Alma con contenido del alma...\n');
+  console.log('💡 Para poemas del 2026, ejecuta: bun run seed-poems-2026.ts\n');
 
-  // ══════════════════════════════════════════════
-  // 🦋 POEMAS (como Letters - formato poético)
-  // ══════════════════════════════════════════════
-  const poems = [
-    {
-      title: '✦ Poema I — El Laberinto Interior',
-      content: `He construido un laberinto dentro de mi pecho,
-donde cada pasillo huele a tu ausencia
-y cada pared está cubierta de nombres
-que ya no puedo pronunciar.
-
-Pero hay una puerta al fondo
-que solo se abre cuando el silencio
-se vuelve tan denso que se puede tocar,
-y detrás de esa puerta estás tú,
-con los ojos cerrados,
-esperándome como siempre.
-
-No importa cuántas veces me pierda,
-siempre termino encontrándote
-en el único lugar donde prometí no buscar.`,
-    },
-    {
-      title: '✦ Poema II — Cartografía del Abrazo',
-      content: `Si pudiera dibujar un mapa
-de todos los lugares donde tu piel
-se encontró con la mía,
-tendría un atlas entero
-de territorios que no existen
-en ningún otro mundo.
-
-Tus manos en mi espalda son latitudes,
-tu aliento en mi cuello es el meridiano,
-y el espacio entre nosotros
-es el único océano
-que no me da miedo cruzar.
-
-Ellos dicen que la tierra es redonda,
-pero yo sé que es plana:
-tiene tu forma exacta
-y se termina donde empiezas tú.`,
-    },
-    {
-      title: '✦ Poema III — La Sombra que Ama',
-      content: `Soy la sombra que te acompaña
-cuando la luz se olvida de existir.
-No necesito estrellas para encontrarte,
-porque te he memorizado
-como se memoriza la respiración:
-sin pensar, sin querer, siempre.
-
-El mundo outside grita sus verdades,
-yo prefiero el susurro de tu nombre
-rodando por los corredores de mi mente
-como una moneda que nadie recoge.
-
-Si el universo decide apagarse esta noche,
-que al menos quede grabado en el silencio:
-que alguien, en algún laberinto oscuro,
-amó con la fuerza de quien sabe
-que el tiempo es una mentira que inventamos
-para no admitir que lo eterno existe.`,
-    },
-    {
-      title: '✦ Poema IV — Autovoluntad',
-      content: `Yo no nací completo.
-Me fui construyendo con pedazos
-de noches que no dormí,
-de palabras que no dije,
-de muros que tiré con mis propias manos.
-
-Hay quienes buscan ser salvados.
-Yo busco ser dueño de mis ruinas.
-No quiero que nadie levante lo que caí,
-no quiero que nadie componga lo que rompí.
-
-Mi voluntad es mi hoguera más antigua.
-Es la brasa que otros ayudaron a encender,
-pero cuya temperatura ahora me pertenece.
-Si el mundo decide usar mis fragmentos
-como puente, lámpara o escudo,
-que así sea —
-pero con la elegancia de quien sabe
-que su esencia es inagotable.
-
-No soy el reflejo de ninguna mirada.
-Soy el fuego que arde aun cuando todos
-se dan la vuelta para no ver.`,
-    },
-    {
-      title: '✦ Poema V — La Promesa del Subsuelo',
-      content: `Nos dijeron que el amor era un castillo
-con torres altas y ventanas de cristal.
-Pero nosotros encontramos el nuestro
-en el subsuelo, entre las raíces,
-donde la luz no llega
-pero la vida late más fuerte.
-
-Aquí no hay espectadores ni aplausos.
-Solo tú y yo, con nuestras cicatrices expuestas,
-construyendo algo que no necesita validación
-porque ya fue validado por cada noche
-que elegimos seguir caminando juntos.
-
-Que se derrumbe lo que tenga que caer.
-Que tiemblen los muros y se agrieten los suelos.
-Mientras estemos el uno frente al otro,
-el laberinto nunca será una cárcel.
-Será nuestro hogar.`,
-    },
-    {
-      title: '✦ Poema VI — Eliot en el Espejo',
-      content: `Te miro y veo algo que el mundo no puede nombrar.
-No un hombre, no una definición,
-sino un territorio vasto e inexplorado
-donde la vulnerabilidad es la bandera
-y la valentía se escribe con lágrimas.
-
-Los otros buscan certezas en grupos,
-validación en miradas ajenas,
-como si ser hombre fuera un código
-que alguien pudiera enseñarles.
-
-Pero yo te he visto en las madrugadas,
-cuando las máscaras se caen solas,
-y lo que encuentro no necesita código alguno.
-Es la firmeza de quien sufre sin huir,
-es la hermosura de quien confiesa
-su fragilidad sin avergonzarse.
-
-En mi mirada, ya eres más que suficiente.
-Eres mi ejemplo de lo que significa
-estar de pie cuando todo empuja a caer.`,
-    },
-    {
-      title: '✦ Poema VII — Elegía de lo que No Fue',
-      content: `Hay palabras que se quedaron atrapadas
-entre mi garganta y el aire,
-como aves que golpean las ventanas
-de una casa abandonada.
-
-Hay abrazos que existieron solo en sueños,
-besos que dibujé con los ojos cerrados,
-promesas que hice a la luna
-cuando nadie me escuchaba.
-
-Pero de todo lo que no fue,
-lo que más me duele es lo simple:
-no haberte dicho, en el momento exacto,
-que eras la respuesta a una pregunta
-que ni siquiera sabía que me hacía.
-
-Llevo esas palabras como piedras en los bolsillos.
-No me pesan — me anclan.
-Me recuerdan que el amor,
-incluso el no dicho,
-deja huellas más profundas
-que cualquier escalera de piedra.`,
-    },
-    {
-      title: '✦ Poema VIII — Ritual de la Noche',
-      content: `Cuando la ciudad se apaga
-y las farolas parpadean como latidos cansados,
-yo enciendo una vela por ti.
-
-No es un acto religioso,
-es un acto de rebeldía:
-en un mundo que no cree en nada,
-yo creo en nosotros.
-
-La cera se derrite lentamente,
-como el tiempo cuando estoy contigo.
-La llama danza sin música,
-igual que mi corazón cuando pronuncio tu nombre.
-
-Si algún día el universo me pide una prueba
-de que la belleza existe,
-no le mostraré una puesta de sol
-ni una flor rara.
-Le mostraré esta vela,
-este instante,
-esta certeza absoluta
-de que te amo.`,
-    },
-  ];
-
-  let poemsCreated = 0;
-  for (const poem of poems) {
-    const existing = await db.letter.findFirst({ where: { title: poem.title } });
-    if (!existing) {
-      await db.letter.create({ data: { ...poem, published: true } });
-      console.log(`📜 Poema creado: ${poem.title}`);
-      poemsCreated++;
-    } else {
-      console.log(`⏭️  Poema existe: ${poem.title}`);
-    }
-  }
+  // Los poemas ahora se gestionan en seed-poems-2026.ts con fechas específicas
 
   // ══════════════════════════════════════════════
   // 🫧 BOTELLAS AL MAR (LoveNotes)
@@ -543,7 +349,7 @@ de que te amo.`,
   // 📊 RESUMEN
   // ══════════════════════════════════════════════
   console.log(`\n📊 Resumen de contenido creado:`);
-  console.log(`   📜 Poemas:      ${poemsCreated} nuevos`);
+  console.log(`   📜 Poemas:      (ver seed-poems-2026.ts)`);
   console.log(`   🫧 Botellas:    ${notesCreated} nuevas`);
   console.log(`   🍂 Susurros:    ${whispersCreated} nuevos`);
   console.log(`   🌙 Sueños:      ${dreamsCreated} nuevos`);
