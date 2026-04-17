@@ -56,7 +56,7 @@ export default function CanvasViewer({
       audioRef.current.pause();
     }
 
-    const audio = new Audio(`/upload/${song.filename}`);
+    const audio = new Audio(`/api/upload/files/${song.filename}`);
     audio.play().catch(() => {});
     audioRef.current = audio;
     setPlayingSongId(song.id);
@@ -92,7 +92,7 @@ export default function CanvasViewer({
         if (!photo) return null;
         return (
           <img
-            src={`/upload/${photo.filename}`}
+            src={`/api/upload/files/${photo.filename}`}
             alt={photo.caption || photo.originalName}
             className="w-full h-full object-cover rounded"
             loading="lazy"

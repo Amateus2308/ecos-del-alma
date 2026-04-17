@@ -35,7 +35,7 @@ export default function FloatingMusicPlayer({ songs }: FloatingMusicPlayerProps)
     }
     if (!currentSong) return;
 
-    const audio = new Audio(`/upload/${currentSong.filename}`);
+    const audio = new Audio(`/api/upload/files/${currentSong.filename}`);
     audio.volume = volume;
     audioRef.current = audio;
 

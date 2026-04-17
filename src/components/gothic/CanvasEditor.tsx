@@ -472,7 +472,7 @@ export default function CanvasEditor({
         if (!photo) return <div className="flex items-center justify-center text-[#8a7e6b] text-sm">Foto no encontrada</div>;
         return (
           <img
-            src={`/upload/${photo.filename}`}
+            src={`/api/upload/files/${photo.filename}`}
             alt={photo.caption || photo.originalName}
             className="w-full h-full object-cover rounded pointer-events-none"
             draggable={false}
@@ -718,7 +718,7 @@ export default function CanvasEditor({
                     className="w-full flex items-center gap-2 px-2 py-1.5 rounded hover:bg-[#1a1a1a] transition-colors text-left"
                   >
                     <img
-                      src={`/upload/${p.filename}`}
+                      src={`/api/upload/files/${p.filename}`}
                       alt={p.caption || ''}
                       className="w-8 h-8 rounded object-cover border border-[#2a2a2a]"
                     />

@@ -379,7 +379,7 @@ export default function AdminPanel({
                           {photos.map((p) => (
                             <div key={p.id} className="flex items-center gap-2 p-2 bg-[#0a0a0a] rounded border border-[#2a2a2a]">
                               <img
-                                src={`/upload/${p.filename}`}
+                                src={`/api/upload/files/${p.filename}`}
                                 alt={p.caption || p.originalName}
                                 className="w-10 h-10 rounded object-cover border border-[#2a2a2a]"
                               />

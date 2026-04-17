@@ -58,7 +58,7 @@ function PhotoCard({
       <div className={`relative ${aspectClass} overflow-hidden bg-[#0a0a0a]`}>
         {!imgError ? (
           <img
-            src={`/upload/${photo.filename}`}
+            src={`/api/upload/files/${photo.filename}`}
             alt={photo.caption || photo.originalName}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
@@ -224,7 +224,7 @@ function Lightbox({
         >
           {!imgError ? (
             <img
-              src={`/upload/${photo.filename}`}
+              src={`/api/upload/files/${photo.filename}`}
               alt={photo.caption || photo.originalName}
               className="max-w-full max-h-[80vh] object-contain rounded-sm border border-[#2a2a2a] shadow-2xl"
               onError={() => setImgError(true)}

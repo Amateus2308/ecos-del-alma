@@ -135,7 +135,7 @@ export default function GothicAudioPlayer({
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       {/* Audio element (hidden) */}
-      <audio ref={audioRef} src={`/upload/${song.filename}`} preload="metadata" />
+      <audio ref={audioRef} src={`/api/upload/files/${song.filename}`} preload="metadata" />
 
       {/* Waveform decoration (CSS only) */}
       <div className="absolute top-0 left-0 right-0 h-px overflow-hidden">
